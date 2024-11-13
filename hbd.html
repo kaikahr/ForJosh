@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Love!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #272925;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .happy-birthday {
+            position: absolute;
+            font-size: 3em;
+            color: #ff4500;
+            text-align: center;
+            z-index: 10;
+            text-shadow: 2px 2px #ffa07a;
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, #ff6666, #ff1a1a);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .balloon:nth-child(2) {
+            background: linear-gradient(to bottom, #66b3ff, #1a8cff);
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(3) {
+            background: linear-gradient(to bottom, #66ff66, #33cc33);
+            animation-duration: 7s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 10px rgba(255, 255, 0, 0.6);
+            animation: burst 1.5s ease-out infinite;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: scale(0.1);
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            animation: fall 4s linear infinite;
+        }
+
+        .confetti:nth-child(2) {
+            background-color: #ffeb3b;
+            animation-duration: 5s;
+        }
+
+        .confetti:nth-child(3) {
+            background-color: #00e676;
+            animation-duration: 6s;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="happy-birthday">Happy Birthday Love!</div>
+    <div id="balloons"></div>
+    <div id="fireworks"></div>
+    <div id="confetti"></div>
+    <script>
+        // JavaScript to create the balloons, fireworks, and confetti
+        window.onload = function() {
+            const balloonsContainer = document.getElementById("balloons");
+            const fireworksContainer = document.getElementById("fireworks");
+            const confettiContainer = document.getElementById("confetti");
+            
+            // Create multiple balloons
+            for (let i = 0; i < 15; i++) {
+                let balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.animationDelay = Math.random() * 5 + "s";
+                balloonsContainer.appendChild(balloon);
+            }
+            
+            // Create multiple fireworks
+            for (let i = 0; i < 10; i++) {
+                let firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * 100 + "vw";
+                firework.style.top = Math.random() * 80 + "vh";
+                firework.style.animationDelay = Math.random() * 3 + "s";
+                fireworksContainer.appendChild(firework);
+            }
+
+            // Create multiple confetti
+            for (let i = 0; i < 20; i++) {
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDelay = Math.random() * 4 + "s";
+                confettiContainer.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+</html>
